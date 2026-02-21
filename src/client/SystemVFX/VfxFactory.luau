@@ -3,7 +3,7 @@ local VfxFactory = {}
 local rng = Random.new()
 
 print("[VfxFactory] Initialized.")
-
+print("Probando Commit")
 function VfxFactory.CloneParts(part: BasePart, amount: number, parent: Instance): { BasePart }
 	local clonList = table.create(amount)
 
