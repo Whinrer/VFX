@@ -1,0 +1,36 @@
+{
+  "name": "VFX",
+  "tree": {
+    "$className": "DataModel",
+    "Workspace": {
+      "$ignoreUnknownInstances": true,
+      "Debris": {
+        "$ignoreUnknownInstances": true,
+        "$className": "Folder"
+      }
+    },
+    "ReplicatedStorage": {
+      "$ignoreUnknownInstances": true,
+      "Shared": {
+        "$ignoreUnknownInstances": true,
+        "$path": "src/shared"
+      }
+    },
+    "ServerScriptService": {
+      "$ignoreUnknownInstances": true,
+      "Server": {
+        "$ignoreUnknownInstances": true,
+        "$path": "src/server"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "$ignoreUnknownInstances": true,
+        "Client": {
+          "$ignoreUnknownInstances": true,
+          "$path": "src/client"
+        }
+      }
+    }
+  }
+}
