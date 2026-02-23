@@ -9,10 +9,7 @@ function VfxPatters.CreateStaticCircle(center: Vector3, mainPart: BasePart, radi
 	local partList = VfxFactory.CloneParts(mainPart, amount, workspace.Debris)
 	VfxFactory.MovePartToPosition(partList, positionList)
 end
-function VfxPatters.ArrangeListInCircle(center: Vector3, radius: number, listBlock: { BasePart })
-	local positionList = VfxMath.CalculateCirclePosition(center, radius, #listBlock, 0, 360)
-	VfxFactory.MovePartToPosition(listBlock, positionList)
-end
+
 function VfxPatters.CreateStaticSpiral(
 	center: Vector3,
 	mainPart: BasePart,
@@ -27,6 +24,16 @@ function VfxPatters.CreateStaticSpiral(
 		VfxMath.CalculateSpiralCFrames(center, radius, amount, heigth, loops, spinDirection, axisMultiplicator)
 	local partList = VfxFactory.CloneParts(mainPart, amount, workspace.Debris)
 	VfxFactory.MovePartToPosition(partList, cframeList)
+end
+
+function VfxPatters.ArrangeListInCircle(center: Vector3, radius: number, listBlock: { BasePart })
+	local positionList = VfxMath.CalculateCirclePosition(center, radius, #listBlock, 0, 360)
+	VfxFactory.MovePartToPosition(listBlock, positionList)
+end
+
+function VfxPatters.CreateImpactCircle(center, radius, listBlock: { BasePart }, startAngle: number, endAngle: number)
+	local cframeList = VfxMath.ImpactCircleCframe(center, radius, #listBlock, startAngle, endAngle)
+	VfxFactory.MovePartToPosition(listBlock, cframeList)
 end
 
 return VfxPatters

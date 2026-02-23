@@ -2,6 +2,8 @@ local VfxMath = {}
 
 print("[VfxMath] Initialized.")
 
+local rng = Random.new()
+
 function VfxMath.GenerateAngles(amount: number, startAngle: number, endAngle: number, spinDirection: number): { number }
 	local anglesList = table.create(amount)
 	local anglesStep = spinDirection * ((endAngle - startAngle) / (amount - 1))
@@ -58,5 +60,26 @@ function VfxMath.CalculateSpiralCFrames(
 	return cframeList
 end
 
-function VfxMath.Calculate() end
+function VfxMath.ImpactCircleCframe(
+	center: Vector3,
+	radius: number,
+	amount: number,
+	startAngle: number,
+	endAngle: number
+)
+	local anglesList = VfxMath.GenerateAngles(amount, startAngle, endAngle, 1)
+	local cframeList = { CFrame }
+	for i = 1, amount, 1 do
+		local x = center.X + math.cos(anglesList[i]) * radius
+		local z = center.Z + math.sin(anglesList[i]) * radius
+
+		local position = Vector3.new(x, center.Y, z)
+		local baseCframe = CFrame.new(position, center)
+
+		local anglesRandom = CFrame.Angles(rng:NextInteger(-15, 15), center.Y, rng:NextInteger(-15, 15))
+		cframeList[i] = baseCframe * anglesRandom
+	end
+	return cframeList
+end
+
 return VfxMath
