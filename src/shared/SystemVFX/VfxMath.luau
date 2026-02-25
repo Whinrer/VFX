@@ -1,7 +1,5 @@
 local VfxMath = {}
 
-print("[VfxMath] Initialized.")
-
 local rng = Random.new()
 
 function VfxMath.GenerateAngles(amount: number, startAngle: number, endAngle: number, spinDirection: number): { number }

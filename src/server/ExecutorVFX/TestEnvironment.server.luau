@@ -1,20 +1,16 @@
-local VfxPatters = require(script.Parent.Parent.Parent.shared.SystemVFX.VfxPatters)
-local VfxMath = require(script.Parent.Parent.SystemVFX.VfxMath)
-local VfxFactory = require(script.Parent.Parent.SystemVFX.VfxFactory)
+local ReplicateStorage = game:GetService("ReplicatedStorage")
+local VfxPatterns = require(ReplicateStorage.Shared.SystemVFX.VfxPatterns)
 
-local CollectionService = game:GetService("CollectionService")
-local mainPart = CollectionService:GetTagged("partevfx")[1] :: BasePart
+local spawnEvent = ReplicateStorage:WaitForChild("SpawnVFXEvent") :: RemoteEvent
 
-print("[TestEnviroment] Initialized.")
+spawnEvent.OnServerEvent:Connect(function(player)
+	print("Hola, " .. player.Name)
+	local character = player.Character
 
-local radius = 10
-local amount = 50
-local startAngle = 0
-local endAngle = 360
-local heigth = 40
-local loops = 2
+	if not character or not character.PrimaryPart then
+		return
+	end
 
-local minSize = Vector3.new(1, 1, 2)
-local maxSize = Vector3.new(3, 2, 3)
-local blockList = VfxFactory.GenerateRandomBlock(amount, mainPart.Position, minSize, maxSize, workspace.Debris)
-VfxPatters.CreateImpactCircle(mainPart.Position, radius, blockList, startAngle, endAngle)
+	local headCharacter = character.PrimaryPart.Position - Vector3.new(0, 3, 0)
+	VfxPatterns.CreateHaloAbovePlayer(headCharacter)
+end)
