@@ -1,4 +1,4 @@
-local VfxPatters = require(script.Parent.Parent.SystemVFX.VfxPatters)
+local VfxPatters = require(script.Parent.Parent.Parent.shared.SystemVFX.VfxPatters)
 local VfxMath = require(script.Parent.Parent.SystemVFX.VfxMath)
 local VfxFactory = require(script.Parent.Parent.SystemVFX.VfxFactory)
 

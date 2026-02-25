@@ -16,6 +16,8 @@ function VfxFactory.CloneParts(part: BasePart, amount: number, parent: Instance)
 	return clonList
 end
 
+--Mejorar el sistema de generación de bloques:
+-- * Pueda personalizarse mas
 function VfxFactory.GenerateRandomBlock(
 	amount: number,
 	center: Vector3,
